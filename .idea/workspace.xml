@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5009d92-0112-440d-8db7-c68f9ff5fec9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/ProductsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Trait/SlugTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/products/details.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/products/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Trait/SlugTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trait/SlugTrait.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +204,7 @@
       <option name="presentableId" value="Default" />
       <updated>1705503484739</updated>
       <workItem from="1705503485919" duration="1353000" />
-      <workItem from="1705505005885" duration="2602000" />
+      <workItem from="1705505005885" duration="2748000" />
     </task>
     <servers />
   </component>
