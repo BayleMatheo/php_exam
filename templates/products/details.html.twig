@@ -1,7 +1,26 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Détails de {% endblock %}
+{% block title %}Détails de {{ article.Nom }} {% endblock %}
 
 {% block body %}
-    <h1>Détails de </h1>
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+                <h1>{{ article.Nom }} </h1>
+            </div>
+            <div class="col-6">
+            </div>
+            <div class="col-6">
+                <p>{{ article.description }}</p>
+                <p>Prix : {{ article.prix / 100 }} € </p>
+                {% if nb_articles_en_stock > 0%}
+                    <a href="#" class="btn btn-success">Ajouter au panier</a>
+                    <p>Restant: {{ nb_articles_en_stock }}</p>
+                {% else %}
+                    <p class="text-danger">En rupture</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
 {% endblock %}

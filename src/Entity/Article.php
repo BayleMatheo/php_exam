@@ -4,12 +4,15 @@ namespace App\Entity;
 
 use App\Entity\Trait\SlugTrait;
 use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
 {
-    use SlugTrait;
+
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -36,7 +39,11 @@ class Article
 
     #[ORM\ManyToOne(inversedBy: 'article_id')]
     private ?Cart $cart = null;
-
+    public function __construct()
+    {
+        $this->date_de_publication = new \DateTimeImmutable();
+        $this->Lien_de_image = 'default.jpg';
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -113,6 +120,7 @@ class Article
 
         return $this;
     }
+
 
     public function getCart(): ?Cart
     {

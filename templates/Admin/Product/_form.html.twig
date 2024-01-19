@@ -1,0 +1,7 @@
+{{ form_start(articleForm) }}
+    {{ form_row(articleForm.Nom) }}
+    {{ form_row(articleForm.description) }}
+    {{ form_row(articleForm.prix) }}
+    {{ form_row(articleForm.Lien_de_image) }}
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(articleForm) }}

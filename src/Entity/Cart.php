@@ -15,16 +15,13 @@ class Cart
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'carts')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?User $user_id = null;
 
-    #[ORM\OneToMany(mappedBy: 'cart', targetEntity: article::class)]
-    private Collection $article_id;
-
-    public function __construct()
-    {
-        $this->article_id = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'carts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Article $article_id = null;
 
     public function getId(): ?int
     {
@@ -43,32 +40,13 @@ class Cart
         return $this;
     }
 
-    /**
-     * @return Collection<int, article>
-     */
     public function getArticleId(): Collection
     {
         return $this->article_id;
     }
-
-    public function addArticleId(article $articleId): static
+    public function setIdArticle(?Article $article_id): static
     {
-        if (!$this->article_id->contains($articleId)) {
-            $this->article_id->add($articleId);
-            $articleId->setCart($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArticleId(article $articleId): static
-    {
-        if ($this->article_id->removeElement($articleId)) {
-            // set the owning side to null (unless already changed)
-            if ($articleId->getCart() === $this) {
-                $articleId->setCart(null);
-            }
-        }
+        $this->article_id = $article_id;
 
         return $this;
     }
