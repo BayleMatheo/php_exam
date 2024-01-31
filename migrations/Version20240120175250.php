@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240119174837 extends AbstractMigration
+final class Version20240120175250 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,7 +20,7 @@ final class Version20240119174837 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE article (id INT AUTO_INCREMENT NOT NULL, id_user_id INT NOT NULL, cart_id INT DEFAULT NULL, nom VARCHAR(75) NOT NULL, description VARCHAR(255) NOT NULL, prix DOUBLE PRECISION NOT NULL, date_de_publication DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', lien_de_image VARCHAR(255) NOT NULL, INDEX IDX_23A0E6679F37AE5 (id_user_id), INDEX IDX_23A0E661AD5CDBF (cart_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE article (id INT AUTO_INCREMENT NOT NULL, id_user_id INT NOT NULL, cart_id INT DEFAULT NULL, nom VARCHAR(75) NOT NULL, description VARCHAR(255) NOT NULL, prix DOUBLE PRECISION NOT NULL, date_de_publication DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', lien_de_image VARCHAR(255) NOT NULL, nb_article INT NOT NULL, INDEX IDX_23A0E6679F37AE5 (id_user_id), INDEX IDX_23A0E661AD5CDBF (cart_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE cart (id INT AUTO_INCREMENT NOT NULL, user_id_id INT NOT NULL, article_id_id INT NOT NULL, INDEX IDX_BA388B79D86650F (user_id_id), INDEX IDX_BA388B78F3EC46 (article_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE invoice (id INT AUTO_INCREMENT NOT NULL, user_id_id INT DEFAULT NULL, date_de_transaction DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', montant DOUBLE PRECISION NOT NULL, ville_de_facturation VARCHAR(100) NOT NULL, zipcode VARCHAR(5) NOT NULL, INDEX IDX_906517449D86650F (user_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE stock (id INT AUTO_INCREMENT NOT NULL, article_id INT NOT NULL, nb_article INT NOT NULL, INDEX IDX_4B3656607294869C (article_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');

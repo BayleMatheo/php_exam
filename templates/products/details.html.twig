@@ -14,7 +14,7 @@
                 <p>{{ article.description }}</p>
                 <p>Prix : {{ article.prix / 100 }} € </p>
                 {% if nb_articles_en_stock > 0%}
-                    <a href="#" class="btn btn-success">Ajouter au panier</a>
+                    <a href="{{ path('cart_add', {id: article.id}) }}" class="btn btn-success">Ajouter au panier</a>
                     <p>Restant: {{ nb_articles_en_stock }}</p>
                 {% else %}
                     <p class="text-danger">En rupture</p>

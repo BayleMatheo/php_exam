@@ -4,10 +4,12 @@ namespace App\Controller\Admin;
 
 
 use App\Entity\Article;
-use App\Form\ProductFormType;
+use App\Entity\Stock;
+use App\Form\ProductsFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -23,16 +25,18 @@ class ProductController extends AbstractController
         return $this->render('admin/product/index.html.twig');
     }
     #[Route('/add', name: 'add')]
-    public function add(Request $request, EntityManagerInterface $em, SluggerInterface $slugger, Security $security): Response
+    public function add(Request $request, EntityManagerInterface $em, Security $security): Response
     {
         $article = new Article();
-        $articleForm = $this->createForm(ProductFormType::class, $article);
+        $articleForm = $this->createForm(ProductsFormType::class, $article);
 
         $articleForm->handleRequest($request);
 
+        //dd($articleForm->isSubmitted() && $articleForm->isValid() ? "OKOK" : "Invalid");
+
         if ($articleForm->isSubmitted() && $articleForm->isValid()) {
-            $slug = $slugger->slug($article->getNom());
-            $article->setNom($slug);
+            $nom = $article->getNom();
+            $article->setNom($nom);
 
             $prix = $article->getPrix() * 100;
             $article->setPrix($prix);
@@ -40,12 +44,39 @@ class ProductController extends AbstractController
             $user = $security->getUser();
             $article->setIdUser($user);
 
+            $nbArticle = $articleForm->get('nb_article')->getData();
+
+            $stock = new Stock();
+            $stock->setArticle($article);
+            $stock->setNbArticle($nbArticle);
+
+            $image = $articleForm->get('lien_de_image')->getData();
+
+            if($image) {
+                $originalFilename  = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME );
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
+
+                try{
+                    $image->move(
+                        $this->getParameter('kernel.project_dir').'/public/uploads',
+                        $newFilename
+                    );
+                    $article->setLienDeImage($newFilename);
+                }catch (FileException $e){
+                    return new Response($e->getMessage());
+                }
+            }
+
             $em->persist($article);
+            $em->persist($stock);
             $em->flush();
-            $this->addFlash('success', 'Article ajouté avec succès');
+
+            $this->addFlash('success', 'Produit ajouté avec succès');
 
             return $this->redirectToRoute('admin_products_index');
         }
+
 
         return $this->render('admin/product/add.html.twig', [
             'articleForm' => $articleForm->createView(),
@@ -58,30 +89,37 @@ class ProductController extends AbstractController
         return $this->render('admin/product/index.html.twig');
     }
     #[Route('/edit/{id}', name: 'edit')]
-    public function edit(Article $article,Request $request, EntityManagerInterface $em, SluggerInterface $slugger, Security $security): Response
+    public function edit(Article $article,Request $request, EntityManagerInterface $em): Response
     {
+        $articleForm = $this->createForm(ProductsFormType::class, $article);
+
+        $articleForm->handleRequest($request);
 
         $prix = $article->getPrix() / 100;
         $article->setPrix($prix);
 
-        $articleForm = $this->createForm(ProductFormType::class, $article);
-
-        $articleForm->handleRequest($request);
-
         if ($articleForm->isSubmitted() && $articleForm->isValid()) {
-
-            $slug = $slugger->slug($article->getNom());
-            $article->setNom($slug);
+            $nom = $article->getNom();
+            $article->setNom($nom);
 
             $prix = $article->getPrix() * 100;
             $article->setPrix($prix);
 
-            $user = $security->getUser();
-            $article->setIdUser($user);
-
             $em->persist($article);
             $em->flush();
-            $this->addFlash('success', 'Article modifier avec succès');
+
+            $stocks = $article->getStocks();
+            $nbArticle = $article->getNbArticle();
+
+            foreach ($stocks as $stock) {
+                $stock->setNbArticle($nbArticle);
+                $em->persist($stock);
+            }
+
+            $em->flush();
+
+            $this->addFlash('success', 'Produit modifié avec succès');
+
 
             return $this->redirectToRoute('admin_products_index');
         }

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Validation du Panier</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.ville_de_facturation) }}
+    {{ form_row(form.zipcode) }}
+
+    <button type="submit">Valider le Panier</button>
+    {{ form_end(form) }}
+{% endblock %}

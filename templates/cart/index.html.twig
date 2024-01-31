@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}E-commerce{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+                <h1>Panier</h1>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for element in data %}
+                        <tr>
+                            <td>{{ element.article.Nom }}</td>
+                            <td>{{ element.article.Prix / 100 }} €</td>
+                            <td>{{ element.quantite }}</td>
+                            <td>{{ element.quantite * element.article.Prix / 100 }} €</td>
+                            <td>
+                                <a href="{{ path('cart_add', {id: element.article.id}) }}" class="btn btn-success">+</a>
+                                <a href="{{ path('cart_remove', {id: element.article.id}) }}" class="btn btn-warning">-</a>
+                                <a href="{{ path('cart_delete', {id: element.article.id}) }}" class="btn btn-danger">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">Panier Vide</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td>
+                            <a href="{{ path('cart_empty')}}" class="btn btn-danger">Vider</a>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+                {% if data is not empty %}
+                    <a href="{{ path('cart_validate')}}" class="btn btn-primary">Valider le Panier</a>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

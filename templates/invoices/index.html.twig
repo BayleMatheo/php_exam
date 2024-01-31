@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Factures{% endblock %}
+
+{% block body %}
+    <h1>Liste des Factures</h1>
+
+    {% if invoices is empty %}
+        <p>Aucune facture disponible.</p>
+    {% else %}
+        <table>
+            <thead>
+            <tr>
+                <th>Numero de commande</th>
+                <th>Date de Transaction</th>
+                <th>Montant</th>
+                <th>Ville de Facturation</th>
+                <th>Code Postal</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for invoice in invoices %}
+                <tr>
+                    <td>N° {{ invoice.id }}</td>
+                    <td>{{ invoice.datedetransaction|date('Y-m-d H:i:s') }}</td>
+                    <td>{{ invoice.montant / 100}} €</td>
+                    <td>{{ invoice.villedefacturation }}</td>
+                    <td>{{ invoice.zipcode }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

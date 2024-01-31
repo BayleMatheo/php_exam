@@ -8,24 +8,25 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: InvoiceRepository::class)]
 class Invoice
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'invoices')]
     private ?User $user_id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'datetime_immutable')]
     private ?\DateTimeImmutable $date_de_transaction = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'float')]
     private ?float $montant = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(type: 'string', length: 100)]
     private ?string $ville_de_facturation = null;
 
-    #[ORM\Column(length: 5)]
+    #[ORM\Column(type: 'string', length: 5)]
     private ?string $zipcode = null;
 
     public function getId(): ?int

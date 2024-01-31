@@ -5,44 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5009d92-0112-440d-8db7-c68f9ff5fec9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20240119151445.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20240119151809.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/ProductController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/UsersController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/AAUsersFixtures.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/ArticlesFixtures.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/StockFixtures.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ProductFormType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Admin/Product/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Admin/Product/add.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Admin/Product/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Admin/Product/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Admin/Users/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/Error404.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/capturedecran2-65b9efb1d7ae6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/capturedecran2-65ba9aa334500.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/capturedecran2-65bab268ec34a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/CartController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/InvoicesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/InvoiceType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ProductsFormType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/_partials/_flash.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/cart/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/cart/invoice_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/invoices/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php_exam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php_exam.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20240117081234.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20240117082853.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20240117084145.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20240117085549.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20240117090301.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20240119174837.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20240120175250.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Stock.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Stock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Trait/SlugTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Trait/SlugTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Invoice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ProductFormType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RegistrationFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Admin/Product/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Admin/Product/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/_partials/_nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_partials/_nav.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/products/details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/details.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profile/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +244,13 @@
       <workItem from="1705514088919" duration="7607000" />
       <workItem from="1705573961694" duration="3026000" />
       <workItem from="1705585401808" duration="34248000" />
-      <workItem from="1705678343683" duration="899000" />
+      <workItem from="1705678343683" duration="4009000" />
+      <workItem from="1705761969296" duration="13446000" />
+      <workItem from="1705997626116" duration="6246000" />
+      <workItem from="1706006912344" duration="1165000" />
+      <workItem from="1706284343769" duration="3000" />
+      <workItem from="1706516571265" duration="5982000" />
+      <workItem from="1706682972276" duration="14058000" />
     </task>
     <servers />
   </component>
@@ -276,5 +270,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Entity/Stock.php</url>
+          <line>25</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

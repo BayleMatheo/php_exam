@@ -6,11 +6,11 @@ use App\Entity\Trait\SlugTrait;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
 {
-
 
 
     #[ORM\Id]
@@ -39,11 +39,19 @@ class Article
 
     #[ORM\ManyToOne(inversedBy: 'article_id')]
     private ?Cart $cart = null;
+
+    #[ORM\OneToMany(mappedBy: 'Article_id', targetEntity: Stock::class)]
+    private $stocks;
+
+    #[ORM\Column]
+    private ?int $nb_article = 0;
+
+
     public function __construct()
     {
         $this->date_de_publication = new \DateTimeImmutable();
-        $this->Lien_de_image = 'default.jpg';
     }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -133,4 +141,47 @@ class Article
 
         return $this;
     }
+
+    public function getNbArticle(): ?int
+    {
+        return $this->nb_article;
+    }
+
+    public function setNbArticle(int $nb_article): static
+    {
+        $this->nb_article = $nb_article;
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection<int, Stock>
+     */
+    public function getStocks(): Collection
+    {
+        return $this->stocks;
+    }
+
+    public function addStock(Stock $stock): static
+    {
+        if (!$this->stocks->contains($stock)) {
+            $this->stocks->add($stock);
+            $stock->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stock $stock): static
+    {
+        if ($this->stocks->removeElement($stock)) {
+            if ($stock->getArticle() === $this) {
+                $stock->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
 }
+

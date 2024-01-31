@@ -59,8 +59,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
                 'label' => 'Mot de passe'
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
